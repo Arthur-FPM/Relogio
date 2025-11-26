@@ -1,0 +1,118 @@
+/* Página */
+body {
+    margin: 0;
+    height: 100vh;
+    background: #1b1b1b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Cinzel", serif;
+}
+
+/* Moldura do relógio */
+.steampunk-clock {
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+    position: relative;
+    background: radial-gradient(circle, #3b2f1b, #1d170e);
+    border: 12px solid #a67c42;
+
+    box-shadow:
+        inset 0 0 40px #000,
+        0 0 25px #000,
+        0 0 15px #a67c42;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Parafusos */
+.steampunk-clock::before,
+.steampunk-clock::after {
+    content: "";
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle, #b8873a, #6a4b1f);
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: inset 0 0 5px #000;
+}
+
+.steampunk-clock::before { top: 10px; left: calc(50% - 9px); }
+.steampunk-clock::after  { bottom: 10px; left: calc(50% - 9px); }
+
+/* Área das engrenagens */
+.gears-center {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.35;
+    filter: brightness(0.9);
+}
+
+/* Engrenagem padrão */
+.gear {
+    position: absolute;
+    border: 8px solid #c89b4d;
+    border-radius: 50%;
+    box-shadow: inset 0 0 10px #000, 0 0 10px #000;
+    width: 90px;
+    height: 90px;
+    animation: girar 14s linear infinite;
+}
+
+/* Diferentes tamanhos + velocidade */
+.gear.med {
+    width: 120px;
+    height: 120px;
+    animation-duration: 22s;
+    animation-direction: reverse;
+}
+
+.gear.big {
+    width: 160px;
+    height: 160px;
+    animation-duration: 32s;
+}
+
+/* Dentes da engrenagem */
+.gear::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    border-radius: 50%;
+    border: 10px dashed #a67c42;
+    box-shadow: inset 0 0 10px #000;
+}
+
+/* Animação de rotação */
+@keyframes girar {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Relógio digital */
+#relogio {
+    font-size: 3rem;
+    color: #e2b24d;
+    text-shadow:
+        0 0 10px #e2b24d,
+        0 0 25px #8a5a18;
+    letter-spacing: 3px;
+    z-index: 10;
+    animation: brilho 3s infinite ease-in-out;
+    position: relative;
+}
+
+/* Brilho pulsante */
+@keyframes brilho {
+    0% { text-shadow: 0 0 10px #e2b24d; }
+    50% { text-shadow: 0 0 25px #e2b24d; }
+    100% { text-shadow: 0 0 10px #e2b24d; }
+}
